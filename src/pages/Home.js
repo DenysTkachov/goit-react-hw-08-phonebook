@@ -12,14 +12,12 @@ const styles = {
   },
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>
         Task manager welcome page{' '}
-        <span role="img" aria-label="Greeting icon">
-        
-        </span>
+        <span role="img" aria-label="Greeting icon"></span>
       </h1>
     </div>
   );

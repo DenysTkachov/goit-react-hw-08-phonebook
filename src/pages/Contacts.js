@@ -9,7 +9,7 @@ import  ContactList  from '../components/ContactList/ContactList ';
 import  Filter  from '../components/Filter/Filter';
 import { selectIsLoading } from '../redux/contacts/selectors';
 
-export default function Tasks() {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
