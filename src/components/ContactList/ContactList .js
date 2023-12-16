@@ -15,7 +15,7 @@ const ContactList = () => {
     <ul>
       {visibleContacts.map(contact => (
         <li key={contact.id}>
-          {contact.name}: {contact.phone}{' '}
+          {contact.name}: {contact.number}{' '}
           <button onClick={() => handleDeleteContact(contact.id)}>
             Видалити
           </button>
