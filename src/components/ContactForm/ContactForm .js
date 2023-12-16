@@ -23,9 +23,7 @@ const ContactForm = () => {
       e.preventDefault();
       const { name, number } = contact;
 
-      // Логирование данных перед отправкой на сервер
-      console.log('Sending data to server:', { name, number });
-
+    
       if (name.trim() === '' || number.trim() === '') {
         setErrorMessage('Name and number are required.');
         return;
