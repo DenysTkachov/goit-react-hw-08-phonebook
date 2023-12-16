@@ -7,7 +7,7 @@ import { selectContacts } from '../../redux/contacts/selectors';
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  const [contact, setContact] = useState({ name: '', phone: '' });
+  const [contact, setContact] = useState({ name: '', number: '' });
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = e => {
@@ -19,26 +19,29 @@ const ContactForm = () => {
     }));
   };
 
-    const handleAddContact = e => {
+    const handleAddContact = async e => {
       e.preventDefault();
-      const { name, phone } = contact;
+      const { name, number } = contact;
 
-      if (name.trim() === '' || phone.trim() === '') {
-        setErrorMessage('Name and phone are required.');
+      // Логирование данных перед отправкой на сервер
+      console.log('Sending data to server:', { name, number });
+
+      if (name.trim() === '' || number.trim() === '') {
+        setErrorMessage('Name and number are required.');
         return;
       }
 
       const existingContact = contacts.find(
-        c => c.name.toLowerCase() === name.toLowerCase() || c.phone === phone
+        c => c.name.toLowerCase() === name.toLowerCase() || c.number === number
       );
       if (existingContact) {
         setErrorMessage('Цей контакт та номер вже існує.');
         return;
       }
 
-      dispatch(addContact({ name, phone }));
+      dispatch(addContact({ name, number }));
 
-      setContact({ name: '', phone: '' });
+      setContact({ name: '', number: '' });
     };
 
 
@@ -58,8 +61,8 @@ const ContactForm = () => {
         <label>Номер</label>
         <input
           type="tel"
-          name="phone"
-          value={contact.phone}
+          name="number"
+          value={contact.number}
           onChange={handleInputChange}
           required
         />

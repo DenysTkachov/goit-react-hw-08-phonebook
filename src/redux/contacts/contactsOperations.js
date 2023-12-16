@@ -37,6 +37,8 @@ export const addContact = createAsyncThunk(
         setAuthHeader(persistedToken);
       }
 
+      
+
       const response = await axios.post('/contacts', contact, {
         headers: {
           'Content-Type': 'application/json',
@@ -44,6 +46,7 @@ export const addContact = createAsyncThunk(
       });
       return response.data;
     } catch (e) {
+      console.error('Error adding contact:', e); // Добавьте эту строку для вывода дополнительной информации в консоль
       return thunkAPI.rejectWithValue(e.message);
     }
   }
